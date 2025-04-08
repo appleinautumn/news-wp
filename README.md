@@ -72,3 +72,26 @@ npm run dev
 
 - Run `npm run dev` to start development server
 - Run `npm run build` for production build
+
+## Environment Variables
+
+This project uses environment variables for sensitive information:
+
+1. Copy the sample configuration file:
+   ```bash
+   cp wp-config-local-sample.php wp-config-local.php
+   ```
+
+2. Edit `wp-config-local.php` and add your Google Maps API key:
+   ```php
+   define('GOOGLE_MAPS_API_KEY', 'your-actual-api-key-here');
+   ```
+
+3. Add the following to your `wp-config.php` file:
+   ```php
+   if (file_exists(dirname(__FILE__) . '/wp-config-local.php')) {
+       require_once dirname(__FILE__) . '/wp-config-local.php';
+   }
+   ```
+
+4. Make sure to add `wp-config-local.php` to your `.gitignore` file to prevent it from being committed.
